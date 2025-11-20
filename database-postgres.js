@@ -36,12 +36,12 @@ export class DatabasePostgres{
         await sql `INSERT INTO users (user_name, user_email, user_password) VALUES (${user_name}, ${user_email}, ${user_password})`
     }
 
-    async listUser(search){
+    async listUser(mail, password){
 
         let users 
 
-        if(search){
-            users  = await sql`SELECT id, user_name, user_email FROM users WHERE user_name ilike ${'%' + search + '%'}`
+        if(mail, password){
+            users  = await sql`SELECT * FROM users WHERE user_email ilike ${'%' + mail + '%'} and user_password ilike ${'%' + password + '%'}`
         } else {
             users = await sql`SELECT id, user_name, user_email FROM users`
         }
