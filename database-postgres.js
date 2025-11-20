@@ -7,8 +7,7 @@ export class DatabasePostgres{
         await sql `INSERT INTO notes (note_title, note_content, note_owner) VALUES (${note_title}, ${note_content}, ${note_owner})`
     }
 
-    async listNote(search, nota){
-        const {owner} = nota
+    async listNote(search, owner){
         let notas 
 
         if(search){
