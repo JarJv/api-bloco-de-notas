@@ -59,7 +59,7 @@ const {user_name, user_email, user_password} = request.body
     return reply.status(201).send()
 })
 server.get('/users', async(request, reply) => {
-    const {mail, password} = request.queryh
+    const {mail, password} = request.query
     const users = await database.listUser(mail, password)
 
     return users
