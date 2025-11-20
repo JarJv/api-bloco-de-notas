@@ -8,13 +8,13 @@ export class DatabasePostgres{
     }
 
     async listNote(search, nota){
-        const {note_owner} = nota
+        const {owner} = nota
         let notas 
 
         if(search){
             notas  = await sql`SELECT * FROM notes WHERE note_title ilike ${'%' + search + '%'}`
         } else {
-            notas = await sql`SELECT * FROM notes WHERE note_owner = ${note_owner}`
+            notas = await sql`SELECT * FROM notes WHERE note_owner = ${owner}`
         }
 
         return notas
