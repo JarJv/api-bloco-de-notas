@@ -40,8 +40,8 @@ export class DatabasePostgres{
 
         let users 
 
-        if(mail, password){
-            users  = await sql`SELECT * FROM users WHERE user_email ilike ${'%' + mail + '%'} and user_password ilike ${'%' + password + '%'}`
+        if(mail && password){
+            users  = await sql`SELECT * FROM users WHERE user_email = ${mail} and user_password = ${password}`
         } else {
             users = await sql`SELECT id, user_name, user_email FROM users`
         }
